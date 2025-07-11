@@ -27,6 +27,12 @@ func execEnvoyVersion(binary string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
+	errWait := cmd.Wait()
+	if errWait != nil {
+		return "", errWait
+	}
+
 	return version, nil
 }
 
